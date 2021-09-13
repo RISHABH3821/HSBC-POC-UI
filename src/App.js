@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { UserPage } from './components/UserPage';
+import { HomePage } from './components/HomePage';
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = React.useState(sessionStorage.getItem("userName")?.length>0 && sessionStorage.getItem("password")?.length>0);
+
+  const isUserLoggedIn = () => {
+    if(sessionStorage.getItem("userName")?.length>0 && sessionStorage.getItem("password")?.length>0){
+      setLoggedIn(true);
+    }else{
+      setLoggedIn(false);
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {(() => {
+        if (loggedIn) {
+          return <HomePage logUser = {isUserLoggedIn}/>;
+        } else {
+          return <UserPage logUser = {isUserLoggedIn}/>;
+        }
+      })()}
     </div>
   );
 }

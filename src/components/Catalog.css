@@ -1,0 +1,14 @@
+.catalog-container{
+    display: flex;
+    width: 100vw;
+}
+
+.image-container{
+    flex: 1.5;
+    padding: 10px;
+}
+
+.details-container{
+    flex: 3;
+    padding: 10px;
+}
