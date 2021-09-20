@@ -1,14 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { Cart } from "./Cart";
 import { Catalog } from "./Catalog";
 import { Header } from "./Header";
 import { Orders } from "./Orders";
 import { Profile } from "./Profile";
 import { Shop } from "./Shop";
-
-
 
 export const HomePage = (props) => {
   const {logUser} = props;
@@ -30,6 +27,7 @@ export const HomePage = (props) => {
             <Profile />
           </Route>
           <Route path="/catalog/:productId" component={Catalog}/>
+          <Redirect to='/' />
         </Switch>
       </Router>
     </div>

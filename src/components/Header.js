@@ -1,9 +1,17 @@
-import { AppBar, colors, Toolbar } from "@material-ui/core";
+import {
+  AppBar,
+  colors,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./Header.css";
+import ShopIcon from "@material-ui/icons/ShoppingCartRounded";
+import { VERSION_NO } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,6 +61,13 @@ export const Header = (props) => {
   return (
     <AppBar position="static">
       <Toolbar>
+        <IconButton>
+          <ShopIcon/>
+        </IconButton>
+        <Typography variant="h6">
+          E-Kart
+          <sup style={{fontSize:12}}>{VERSION_NO}</sup>
+        </Typography>
         <ColorButton
           className={classes.margin}
           onClick={() => routeChangeTo("/")}
